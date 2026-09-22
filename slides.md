@@ -74,22 +74,45 @@ Time budget per section is given in the section comment; the total is 25 min.
 
 ## The challenge
 
-- [TODO: who organised it, goal, task definition]
-- [TODO: what was provided / what was expected as output]
+- **Metascience Novelty Indicators Challenge**: launched Sept 2025
+- **Goal**: indicators that *automatically* identify novelty in publications
+- **Ground truth**: field experts rate novelty of OpenAlex papers from the full text
+- **Task**: a novelty score per paper, compared with the expert scores
+- **Evaluation**: median error and its consistency, for scores and rankings
+- **Outcome**: 30 indicators; winner LENS (Jülich, LLM-based)
+- We are loking forward to talk of Sarah Otner at 4 p.m.
 
-## Data
+## Data: the challenge corpus
 
-- [TODO: 100 000 papers: title, abstract, DOI, OpenAlex ID, journal, date]
-- [TODO: field & year composition]
-- 98 291 papers with usable references (1 455 without references, 254 without valid references, 4 051 scored from titles only)
-- [FIG/TABLE: corpus description (T1)]
+- **100 000 papers**, metadata only: title, DOI, OpenAlex ID, journal, date, authors
+- **Recent**: published 2023–2025 (10 % in 2023, 47 % in 2024, 43 % in 2025)
+- **Broad, long-tailed journal mix**: 15 438 journals
+  - median 2 papers per journal; 5 928 appear only once
+  - largest: *Scientific Reports* (1.6 %), *PLoS ONE* (1.4 %), *Int. J. Mol. Sci.* (1.0 %); the top 100 journals hold 29 %
+  - publishers: MDPI 20 %, Elsevier 13 %, Wiley 8 %, Frontiers 6 %
+  - 76 % in open-access journals
+
+## Data: what we could score
+
+- Full texts were not feasible to download, so we work with **titles, abstracts and references from OpenAlex**
+
+<style scoped>table { margin-left: auto; margin-right: auto; }</style>
+
+| Papers | Count | Share |
+|:-------|------:|------:|
+| Scored: title + abstract | 94 240 | 94.2 % |
+| Scored: titles only (no abstracts) | 4 051 | 4.1 % |
+| Not scored: no references | 1 455 | 1.5 % |
+| Not scored: no valid references | 254 | 0.3 % |
+| **Total** | **100 000** | |
+
+- **98 291 papers (98.3 %) scored**
 
 # Our indicators
 
 <!-- ~5 min, 4 slides -->
 
 ## Pipeline
-
 - SPECTER2 embeddings (`allenai/specter2_base` + `specter2` adapter) of title + abstract
 - References retrieved from OpenAlex; titles-only fallback when no abstract is available
 - [FIG: pipeline diagram: paper → OpenAlex refs → SPECTER2 → distances]
