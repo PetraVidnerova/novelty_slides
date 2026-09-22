@@ -1,6 +1,6 @@
 ---
 title: Measuring Scientific Novelty through Conceptual Distance and Knowledge Recombination
-author: Petra Vidnerová, Roman Neruda, Jiří Šejnoha
+author: Petra Vidnerová, Roman Neruda can edit now, Jiří Šejnoha
 institute: Institute of Computer Science, The Czech Academy of Sciences
 date: "October 8, 2026"
 ---
