@@ -1,8 +1,44 @@
 #!/usr/bin/env bash
-# Build the talk slides (Beamer) from slides.md.
-# mainfont override: the default Latin Modern font lacks glyphs for ρ, ≈, ≠ and xelatex drops them silently.
+# Build slides.pdf from slides.md with Marp.
+# slides.md stays in pandoc/Beamer form (YAML title block, `# ` = section, `## ` = slide, no `---`
+# separators); this script turns it into a temporary Marp deck: adds Marp front matter with
+# headingDivider (new slide at every `#`/`##`) and a title slide built from the YAML block.
 set -euo pipefail
 cd "$(dirname "$0")"
 
-pandoc slides.md -t beamer --slide-level=2 -o slides.pdf \
-    --pdf-engine=xelatex -V mainfont="DejaVu Serif"
+SRC=slides.md
+OUT=slides.pdf
+TMP=.slides.marp.md
+trap 'rm -f "$TMP"' EXIT
+
+# value of a top-level key in the YAML block, surrounding quotes stripped
+meta() { awk -v k="$1:" '/^---$/ {if (++n == 2) exit; next} n == 1 && $1 == k {sub(/^[^:]*:[ \t]*/, ""); gsub(/^"|"$/, ""); print}' "$SRC"; }
+
+{
+    cat <<EOF
+---
+marp: true
+theme: default
+paginate: true
+math: katex
+headingDivider: 2
+title: $(meta title)
+author: $(meta author)
+---
+
+<!-- _paginate: false -->
+
+# $(meta title)
+
+$(meta author)
+
+$(meta institute)
+
+$(meta date)
+
+EOF
+    # body: everything after the closing `---` of the YAML block
+    awk 'n>=2 {print; next} /^---$/ {n++}' "$SRC"
+} > "$TMP"
+
+marp "$TMP" --pdf --allow-local-files -o "$OUT"
