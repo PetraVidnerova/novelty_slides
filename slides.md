@@ -110,7 +110,23 @@ Time budget per section is given in the section comment; the total is 25 min.
 
 # Our indicators
 
-<!-- ~5 min, 4 slides -->
+<!-- ~5 min, 5 slides -->
+
+## Motivation: two sources of novelty
+
+<style scoped>
+section { font-size: 26px; padding-right: 390px; }
+section img { position: absolute; right: 70px; top: 50%; transform: translateY(-50%); width: 285px; }
+</style>
+
+- A paper builds on the knowledge it cites, so we compare it with its references in an embedding space
+- **Paper vs. its references**: a paper far from what it cites brings **new results**
+  - → *conceptual distance* (`paper_ref`)
+- **References vs. each other**: distant references mean a **new combination of different ideas**
+  - → *knowledge recombination* (`ref_ref`)
+- The two need not coincide, so we measure them separately
+
+![](img/motivation.svg)
 
 ## Pipeline
 - SPECTER2 embeddings (`allenai/specter2_base` + `specter2` adapter) of title + abstract
