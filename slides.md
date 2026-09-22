@@ -128,6 +128,19 @@ section img { position: absolute; right: 70px; top: 50%; transform: translateY(-
 
 ![](img/motivation.svg)
 
+## Why embeddings?
+
+<style scoped>section { font-size: 27px; }</style>
+
+- An **embedding** maps a text (title + abstract) to a vector; similar meaning → nearby vectors
+- **Distance = dissimilarity of content**: $1 - \cos(\mathbf{a}, \mathbf{b})$
+  - e.g. *"graph neural networks for molecules"* is near *"message passing for chemistry"* despite few shared words
+- **Why use them for novelty?**
+  - *graded*: a continuous distance, not a rare/common journal pair
+  - *content-based*: what papers say, not where they were published
+  - *no category scheme or baseline corpus*: computable per paper
+- **SPECTER2** is trained on citations: a paper lies close to the work it cites, so distance from it is meaningful
+
 ## Pipeline
 - SPECTER2 embeddings (`allenai/specter2_base` + `specter2` adapter) of title + abstract
 - References retrieved from OpenAlex; titles-only fallback when no abstract is available
@@ -137,8 +150,8 @@ section img { position: absolute; right: 70px; top: 50%; transform: translateY(-
 
 - $\text{paper\_ref} = 1 - \frac{1}{n}\sum_i \cos(\mathbf{r}_i, \mathbf{p})$
 - How far the paper departs from the knowledge base it cites
-- [FIG: 2-D sketch: paper point vs. cloud of references]
 
+- [FIG: 2-D sketch: paper point vs. cloud of references]
 ## Knowledge recombination: `ref_ref` and `ref_spread`
 
 - `ref_ref`: mean pairwise $1 - \cos(\mathbf{r}_i, \mathbf{r}_j)$ over references: heterogeneity of the material combined
