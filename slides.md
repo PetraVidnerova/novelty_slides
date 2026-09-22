@@ -18,14 +18,23 @@ Time budget per section is given in the section comment; the total is 25 min.
 
 ## Why measure novelty?
 
-- [TODO: motivation: research assessment, funding, science of science]
-- [TODO: novelty ≠ quality ≠ impact: set the vocabulary early]
-- [FIG: optional teaser image]
+- **Research assessment & funding**: novelty is an explicit criterion in peer review and grant calls, but judged by hand, and inconsistently
+- **Science of science**: how new ideas arise and spread; novel work tends to be recognised late (Wang et al. 2017)
+- **Scale**: expert judgement does not scale to the millions of papers published each year, so we need indicators computable from metadata
+- **Vocabulary**:
+  - *novelty*: how far a paper departs from, or recombines, existing knowledge
+  - *quality*: whether the work is sound
+  - *impact*: whether it is taken up later (citations)
 
 ## What does "novel" mean?
 
-- [TODO: novelty as recombination of existing knowledge (Schumpeter → Uzzi et al. 2013)]
-- [TODO: two intuitions: *what* is combined vs. *how far* the paper moves from it]
+- **Novelty as recombination**: new ideas are "new combinations" of existing ones (Schumpeter 1934)
+- In bibliometrics: a paper is novel if it **cites unusual combinations** of prior work (Uzzi et al. 2013)
+- The references stand in for the knowledge a paper builds on
+- Two intuitions:
+  - ***what* is combined**: how heterogeneous the cited material is (**recombination**)
+  - ***how far*** the paper moves from what it cites (**conceptual distance**)
+- These two need not coincide, so we measure them separately
 
 ## Talk outline
 
