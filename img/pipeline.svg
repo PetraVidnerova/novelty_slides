@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1170 250" font-family="Noto Sans, DejaVu Sans, sans-serif">
+  <defs>
+    <path id="star" d="M0,-15 L4.4,-4.6 15,-4.6 6.5,2.2 9.3,12.8 0,6.4 -9.3,12.8 -6.5,2.2 -15,-4.6 -4.4,-4.6Z"/>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10Z" fill="#57606a"/>
+    </marker>
+  </defs>
+
+  <!-- boxes: width 190, gap 52 -->
+  <g fill="#f6f8fa" stroke="#d0d7de">
+    <rect x="5"   y="5" width="190" height="240" rx="14"/>
+    <rect x="247" y="5" width="190" height="240" rx="14"/>
+    <rect x="489" y="5" width="190" height="240" rx="14"/>
+    <rect x="731" y="5" width="190" height="240" rx="14"/>
+    <rect x="973" y="5" width="190" height="240" rx="14"/>
+  </g>
+
+  <!-- arrows -->
+  <g stroke="#57606a" stroke-width="2.5" marker-end="url(#arrow)">
+    <line x1="200" y1="125" x2="242" y2="125"/>
+    <line x1="442" y1="125" x2="484" y2="125"/>
+    <line x1="684" y1="125" x2="726" y2="125"/>
+    <line x1="926" y1="125" x2="968" y2="125"/>
+  </g>
+
+  <!-- step titles -->
+  <g font-size="21" font-weight="700" fill="#24292f" text-anchor="middle">
+    <text x="100" y="40">Paper</text>
+    <text x="342" y="40">OpenAlex</text>
+    <text x="584" y="40">Texts</text>
+    <text x="826" y="40">SPECTER2</text>
+    <text x="1068" y="40">Distances</text>
+  </g>
+
+  <!-- 1. paper -->
+  <use href="#star" transform="translate(100,110) scale(1.7)" fill="#e8590c"/>
+  <g font-size="16" fill="#57606a" text-anchor="middle">
+    <text x="100" y="165">OpenAlex ID</text>
+    <text x="100" y="187">from the</text>
+    <text x="100" y="207">challenge list</text>
+  </g>
+
+  <!-- 2. OpenAlex -->
+  <g font-size="16" fill="#57606a" text-anchor="middle">
+    <text x="342" y="85">title</text>
+    <text x="342" y="110">abstract</text>
+    <text x="342" y="135">referenced works</text>
+    <text x="342" y="185">then title + abstract</text>
+    <text x="342" y="205">of each reference</text>
+  </g>
+
+  <!-- 3. texts -->
+  <g font-size="15" fill="#24292f" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">
+    <text x="584" y="88">title [SEP]</text>
+    <text x="584" y="107">abstract</text>
+  </g>
+  <use href="#star" transform="translate(528,160) scale(0.9)" fill="#e8590c"/>
+  <g fill="#1f6feb">
+    <circle cx="572" cy="152" r="7"/><circle cx="596" cy="168" r="7"/>
+    <circle cx="620" cy="150" r="7"/><circle cx="642" cy="166" r="7"/>
+  </g>
+  <g font-size="15" text-anchor="middle">
+    <text x="528" y="200" fill="#e8590c" font-weight="700">paper</text>
+    <text x="607" y="200" fill="#1f6feb">n references</text>
+  </g>
+  <text x="584" y="228" font-size="14" fill="#57606a" text-anchor="middle">or titles only</text>
+
+  <!-- 4. SPECTER2 -->
+  <g font-size="16" fill="#57606a" text-anchor="middle">
+    <text x="826" y="75">base + adapter</text>
+  </g>
+  <g stroke="#d0d7de" stroke-width="1">
+    <g fill="#e8590c"><rect x="770" y="120" width="14" height="14"/><rect x="784" y="120" width="14" height="14" opacity="0.6"/><rect x="798" y="120" width="14" height="14" opacity="0.3"/><rect x="812" y="120" width="14" height="14" opacity="0.8"/><rect x="826" y="120" width="14" height="14" opacity="0.45"/></g>
+    <g fill="#1f6feb"><rect x="770" y="145" width="14" height="14" opacity="0.4"/><rect x="784" y="145" width="14" height="14"/><rect x="798" y="145" width="14" height="14" opacity="0.7"/><rect x="812" y="145" width="14" height="14" opacity="0.3"/><rect x="826" y="145" width="14" height="14" opacity="0.55"/></g>
+    <g fill="#1f6feb"><rect x="770" y="170" width="14" height="14" opacity="0.8"/><rect x="784" y="170" width="14" height="14" opacity="0.35"/><rect x="798" y="170" width="14" height="14"/><rect x="812" y="170" width="14" height="14" opacity="0.6"/><rect x="826" y="170" width="14" height="14" opacity="0.25"/></g>
+  </g>
+  <g font-size="17" fill="#24292f">
+    <text x="850" y="133">⋯ <tspan font-weight="700" fill="#e8590c">p</tspan></text>
+    <text x="850" y="158">⋯ <tspan font-weight="700" fill="#1f6feb">r₁</tspan></text>
+    <text x="850" y="183">⋯ <tspan font-weight="700" fill="#1f6feb">rₙ</tspan></text>
+  </g>
+  <text x="826" y="222" font-size="16" fill="#57606a" text-anchor="middle">768-d vectors</text>
+
+  <!-- 5. distances -->
+  <g font-size="16" fill="#57606a" text-anchor="middle">
+    <text x="1068" y="75">1 − cos</text>
+  </g>
+  <g font-size="17" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" fill="#24292f">
+    <text x="1068" y="130">paper_ref</text>
+    <text x="1068" y="185">ref_ref</text>
+  </g>
+  <g font-size="14" fill="#57606a" text-anchor="middle">
+    <text x="1068" y="149">mean, paper vs. refs</text>
+    <text x="1068" y="204">mean, refs vs. refs</text>
+  </g>
+</svg>

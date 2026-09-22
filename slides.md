@@ -142,9 +142,17 @@ section img { position: absolute; right: 70px; top: 50%; transform: translateY(-
 - **SPECTER2** is trained on citations: a paper lies close to the work it cites, so distance from it is meaningful
 
 ## Pipeline
-- SPECTER2 embeddings (`allenai/specter2_base` + `specter2` adapter) of title + abstract
-- References retrieved from OpenAlex; titles-only fallback when no abstract is available
-- [FIG: pipeline diagram: paper → OpenAlex refs → SPECTER2 → distances]
+
+<style scoped>
+section { font-size: 25px; }
+section img { display: block; margin: 50px auto 0; width: 100%; }
+</style>
+
+- **SPECTER2** (`allenai/specter2_base` + `specter2` adapter) embeds the paper and each of its references
+- **Titles-only fallback** if the paper has no abstract not enough references have one
+- Unsupervised: OpenAlex metadata only, no full texts, no model training
+
+![](img/pipeline.svg)
 
 ## Conceptual distance: `paper_ref`
 
@@ -152,19 +160,17 @@ section img { position: absolute; right: 70px; top: 50%; transform: translateY(-
 - How far the paper departs from the knowledge base it cites
 
 - [FIG: 2-D sketch: paper point vs. cloud of references]
-## Knowledge recombination: `ref_ref` and `ref_spread`
+## Knowledge recombination: `ref_ref`
 
 - `ref_ref`: mean pairwise $1 - \cos(\mathbf{r}_i, \mathbf{r}_j)$ over references: heterogeneity of the material combined
-- `ref_spread`: standard deviation of the same pairwise matrix
 - [FIG: 2-D sketch: tight vs. dispersed reference cloud]
 
 ## Descriptive statistics
 
 - `paper_ref`: mean 0.093 (sd 0.017)
 - `ref_ref`: mean 0.108 (sd 0.020)
-- `ref_spread`: mean 0.040
 - Median number of references: 25
-- [FIG: F1: distributions of the three facets]
+- [FIG: F1: distributions of the two facets]
 
 # Results
 
@@ -222,7 +228,3 @@ section img { position: absolute; right: 70px; top: 50%; transform: translateY(-
 ## Backup: full correlation table
 
 - [TABLE: T2]
-
-## Backup: `ref_spread`
-
-- [TODO]
