@@ -201,8 +201,14 @@ table { font-size: 21px; }
 
 ## Are the facets distinct?
 
-- [TODO: inter-facet correlation matrix]
-- [FIG: F2: correlation heatmap]
+<style scoped>
+section { font-size: 24px; }
+section img { display: block; margin: 20px auto 0; width: 88%; }
+</style>
+
+`paper_ref` measures distance to a cloud whose size is `ref_ref`. Broad reference lists make every paper look far from its references, so most of `paper_ref`'s variance is `ref_ref` again.
+
+![](img/paper_ref_vs_ref_ref.png)
 
 ## Comparison with established indicators
 
