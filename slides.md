@@ -174,26 +174,20 @@ section img { display: block; margin: 50px auto 0; width: 100%; }
 
 ## `paper_ref` and `ref_ref` in the corpus
 
-<style scoped>
-section { font-size: 23px; padding-right: 510px; }
-section img { position: absolute; right: 30px; top: 54%; transform: translateY(-50%); width: 480px; }
-table { font-size: 21px; }
-</style>
+**Conceptual distance**
 
-- **Conceptual distance**: $\text{paper\_ref} = 1 - \frac{1}{n}\sum_i \cos(\mathbf{r}_i, \mathbf{p})$
-- **Recombination**: $\text{ref\_ref} = \frac{1}{n^2}\sum_{i,j} \bigl(1 - \cos(\mathbf{r}_i, \mathbf{r}_j)\bigr)$
+$$
+\text{paper\_ref} = 1 - \frac{1}{n}\sum_i \cos(\mathbf{r}_i, \mathbf{p})
+$$
 
-| 98 291 papers | `paper_ref` | `ref_ref` |
-|:--|--:|--:|
-| mean (sd) | 0.093 (0.017) | 0.108 (0.020) |
-| median | 0.093 | 0.109 |
-| IQR | 0.082–0.103 | 0.096–0.121 |
-| max | 0.223 | 0.194 |
+**Recombination**
+
+$$
+\text{ref\_ref} = \frac{1}{n(n-1)}\sum_{i \neq j} \bigl(1 - \cos(\mathbf{r}_i, \mathbf{r}_j)\bigr)
+$$
 
 - References per paper: median 25 (IQR 15–39)
 - In 89 % of papers the references are further from **each other** than from the **paper** citing them
-
-![](img/facet_distributions.svg)
 
 # Results
 
@@ -229,21 +223,38 @@ Does novelty just track the prestige or impact of the journal?
 
 ## Journal standing: paper level
 
+<style scoped>
+section { font-size: 24px; }
+section img { display: block; margin: 10px auto 0; height: 390px; }
+</style>
+
 - [TODO: key message: `ref_ref` weakly positive, `paper_ref` ≈ 0]
-- [TABLE: SJR, quartile, h-index, cites/doc, OpenAlex citedness × facets (§5.3)]
-- [FIG: F4: heatmap facets × journal metrics]
+
+![](img/journal_matrix_paper.png)
 
 ## Journal standing: journal level
 
+<style scoped>
+section { font-size: 24px; }
+section img { display: block; margin: 10px auto 0; height: 390px; }
+</style>
+
 - [TODO: `ref_ref` vs. SJR / citedness at ≥1, ≥5, ≥20 papers per journal]
-- [FIG: F6: journal-level scatter, mean facet vs. SJR (log)]
 - [FIG: F5: facet by SJR quartile, boxplots]
 - [TODO: ecological-fallacy caveat]
 
+![](img/journal_matrix_journal.png)
+
 ## Comparison with established indicators
 
-- [TODO: correlations with Uzzi / Lee / Foster / Wang (novelpy)]
-- [FIG: F3]
+<style scoped>
+section { font-size: 24px; }
+section img { display: block; margin: 10px auto 0; height: 440px; }
+</style>
+
+- `ref_ref` agrees moderately with established indicators (ρ 0.18–0.39); `paper_ref` agrees less (0.12–0.25)
+
+![](img/novelpy_matrix_full.png)
 
 ## Composite indices depend on normalization
 
@@ -267,10 +278,30 @@ Does novelty just track the prestige or impact of the journal?
 
 ## Thank you
 
-- [TODO: contact, links (HF Space, datasets), acknowledgement]
+<!-- _paginate: false -->
+<style scoped>
+section { text-align: center; justify-content: center; }
+h2 { font-size: 64px; margin-bottom: 0.2em; }
+.contact { font-size: 28px; line-height: 1.6; }
+.contact a { color: inherit; }
+/* placeholder for the wide logo: replace the div with ![h:120](img/logo.png) */
+.logo { width: 720px; height: 120px; margin: 1.2em auto 0.6em; border: 2px dashed #bbb; border-radius: 8px; color: #999; font-size: 22px; display: flex; align-items: center; justify-content: center; }
+.ack { font-size: 20px; color: #555; max-width: 900px; margin: 0 auto; }
+</style>
 
-# Backup
+Questions?
 
-## Backup: full correlation table
+<div class="contact">
 
-- [TABLE: T2]
+petra@cs.cas.cz
+[github.com/PetraVidnerova/TRUST_score_app](https://github.com/PetraVidnerova/TRUST_score_app)
+
+</div>
+
+<div class="logo">[LOGO]</div>
+
+<div class="ack">
+
+This work was supported by TRUST [TODO: grant / project number].
+
+</div>
