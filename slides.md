@@ -210,10 +210,22 @@ section img { display: block; margin: 20px auto 0; width: 88%; }
 
 ![](img/paper_ref_vs_ref_ref.png)
 
-## Comparison with established indicators
+## Journal metrics we have
 
-- [TODO: correlations with Uzzi / Lee / Foster / Wang (novelpy)]
-- [FIG: F3]
+<style scoped>
+section { font-size: 24px; }
+table { margin-left: auto; margin-right: auto; }
+</style>
+
+Does novelty just track the prestige or impact of the journal?
+
+| Source | Metrics | Coverage |
+|:-------|:--------|:---------|
+| **OpenAlex** `/sources` (open API) | 2-yr mean citedness (open analogue of the Impact Factor), h-index, i10-index, works count, total citations, APC (USD) | 15 412 / 15 438 journals, **99.9 %** of papers |
+| **Scimago 2025** (free CSV, Scopus-based) | SJR (PageRank-like prestige), best quartile Q1–Q4, h-index, cites/doc (2 yr) | 10 128 journals, **80 %** of papers |
+
+- 10 metrics in total: **prestige** (SJR, quartile), **impact per paper** (citedness, cites/doc), **cumulative volume** (h-index ×2, i10-index, works, total citations), and **cost** (APC)
+- Clarivate JIF is proprietary, so not used
 
 ## Journal standing: paper level
 
@@ -227,6 +239,11 @@ section img { display: block; margin: 20px auto 0; width: 88%; }
 - [FIG: F6: journal-level scatter, mean facet vs. SJR (log)]
 - [FIG: F5: facet by SJR quartile, boxplots]
 - [TODO: ecological-fallacy caveat]
+
+## Comparison with established indicators
+
+- [TODO: correlations with Uzzi / Lee / Foster / Wang (novelpy)]
+- [FIG: F3]
 
 ## Composite indices depend on normalization
 
