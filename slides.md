@@ -68,6 +68,24 @@ Time budget per section is given in the section comment; the total is 25 min.
 - [TODO: prior work using embeddings for novelty: citations]
 - [TODO: gap: usually reported as a single number; the choice of facet is implicit]
 
+## novelpy
+
+<style scoped>
+section { font-size: 22px; }
+table { font-size: 20px; margin-top: 50px; margin-left: 60px; }
+</style>
+
+- **Indicators used** (novelpy 1.4): **Uzzi** 2013, **Lee** 2015, **Foster** 2015 (journal pairs), **Shibayama** 2021 (reference text distance)
+  - Wang 2017 not computed: needs future citations, not yet available for 2023–25 papers
+- **Why not novelpy directly?** computational and memory issues
+- **Reimplementation**: same definitions and same full-OpenAlex baseline; counts are *stored* only for the ~9&nbsp;M pairs that challenge papers contain; fast pair counting (Numba), own Louvain
+
+| Validated vs. novelpy on its sample data | |
+|:--|:--|
+| Lee, Shibayama | identical |
+| Uzzi | Spearman 0.93 (random shuffling) |
+| Foster | 0.79; two novelpy runs agree at 0.83 (random Louvain) |
+
 # The novelty challenge
 
 <!-- ~2.5 min, 2 slides -->
@@ -154,23 +172,28 @@ section img { display: block; margin: 50px auto 0; width: 100%; }
 
 ![](img/pipeline.svg)
 
-## Conceptual distance: `paper_ref`
+## `paper_ref` and `ref_ref` in the corpus
 
-- $\text{paper\_ref} = 1 - \frac{1}{n}\sum_i \cos(\mathbf{r}_i, \mathbf{p})$
-- How far the paper departs from the knowledge base it cites
+<style scoped>
+section { font-size: 23px; padding-right: 510px; }
+section img { position: absolute; right: 30px; top: 54%; transform: translateY(-50%); width: 480px; }
+table { font-size: 21px; }
+</style>
 
-- [FIG: 2-D sketch: paper point vs. cloud of references]
-## Knowledge recombination: `ref_ref`
+- **Conceptual distance**: $\text{paper\_ref} = 1 - \frac{1}{n}\sum_i \cos(\mathbf{r}_i, \mathbf{p})$
+- **Recombination**: $\text{ref\_ref} = \frac{1}{n^2}\sum_{i,j} \bigl(1 - \cos(\mathbf{r}_i, \mathbf{r}_j)\bigr)$
 
-- `ref_ref`: mean pairwise $1 - \cos(\mathbf{r}_i, \mathbf{r}_j)$ over references: heterogeneity of the material combined
-- [FIG: 2-D sketch: tight vs. dispersed reference cloud]
+| 98 291 papers | `paper_ref` | `ref_ref` |
+|:--|--:|--:|
+| mean (sd) | 0.093 (0.017) | 0.108 (0.020) |
+| median | 0.093 | 0.109 |
+| IQR | 0.082–0.103 | 0.096–0.121 |
+| max | 0.223 | 0.194 |
 
-## Descriptive statistics
+- References per paper: median 25 (IQR 15–39)
+- In 89 % of papers the references are further from **each other** than from the **paper** citing them
 
-- `paper_ref`: mean 0.093 (sd 0.017)
-- `ref_ref`: mean 0.108 (sd 0.020)
-- Median number of references: 25
-- [FIG: F1: distributions of the two facets]
+![](img/facet_distributions.svg)
 
 # Results
 
