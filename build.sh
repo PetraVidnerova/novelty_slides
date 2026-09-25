@@ -24,6 +24,8 @@ math: katex
 headingDivider: 2
 title: $(meta title)
 author: $(meta author)
+style: |
+  h2 { color: var(--h1-color); }
 ---
 
 <!-- _paginate: false -->

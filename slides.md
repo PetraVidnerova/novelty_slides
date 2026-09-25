@@ -305,9 +305,11 @@ section { text-align: center; justify-content: center; }
 h2 { font-size: 64px; margin-bottom: 0.2em; }
 .contact { font-size: 28px; line-height: 1.6; }
 .contact a { color: inherit; }
-/* placeholder for the wide logo: replace the div with ![h:120](img/logo.png) */
-.logo { width: 720px; height: 120px; margin: 1.2em auto 0.6em; border: 2px dashed #bbb; border-radius: 8px; color: #999; font-size: 22px; display: flex; align-items: center; justify-content: center; }
+.contact { margin-bottom: 1.5em; }
 .ack { font-size: 20px; color: #555; max-width: 900px; margin: 0 auto; }
+p:has(> img) { margin-bottom: 0; }
+.ack p { margin-top: 0; }
+.ack { margin-top: -0.8em; }
 </style>
 
 Questions?
@@ -319,10 +321,11 @@ petra@cs.cas.cz
 
 </div>
 
-<div class="logo">[LOGO]</div>
+![h:140](img/EU_MSMT_en_col.png)
 
 <div class="ack">
 
-This work was supported by TRUST [TODO: grant / project number].
+This work was supported by the project 'Knowledge in the Age of Distrust' (reg. no. CZ.02.01.01/00/23_025/0008711) financed by the European Regional Development Fund.
+
 
 </div>
