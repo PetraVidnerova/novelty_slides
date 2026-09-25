@@ -258,9 +258,15 @@ section img { display: block; margin: 10px auto 0; height: 440px; }
 
 ## Composite indices depend on normalization
 
-- [TODO: `novelty_max = max(norm(paper_ref), norm(ref_ref))`]
-- [TABLE: normalization vs. share won by `ref_ref` vs. ρ (§5.5)]
-- [TODO: key message: the reported correlation varies about fivefold with the normalization choice]
+<style scoped>
+section { font-size: 24px; }
+section img { display: block; margin: 10px auto 0; height: 360px; }
+</style>
+
+- Composite `novelty_max = max(norm(paper_ref), norm(ref_ref))`: the normalization decides which component wins the max
+- Same data, different normalization: ρ with journal citedness **halves** (0.124 → 0.058), and never beats `ref_ref` alone
+
+![](img/composite_normalization.png)
 
 # Conclusion
 
