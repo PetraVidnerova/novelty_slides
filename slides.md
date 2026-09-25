@@ -281,7 +281,21 @@ section img { display: block; margin: 10px auto 0; height: 360px; }
 
 ## Limitations & next steps
 
-- [TODO: field controls, second embedding model, bootstrap CIs, journal matching]
+<style scoped>section { font-size: 26px; }</style>
+
+**Limitations**
+
+- Titles and abstracts only, no full texts (4 % of papers titles-only)
+- One embedding model (SPECTER2)
+- The facets overlap (ρ = 0.81)
+- Recent papers (2023–25): no citation-based validation yet
+
+**Next steps**
+
+- Disentangle the facets: distance from the references *beyond* their spread
+- Control for field and reference count; bootstrap confidence intervals
+- Second embedding model as a robustness check
+- Validate against the challenge's expert ratings and, later, citations
 
 ## Thank you
 
