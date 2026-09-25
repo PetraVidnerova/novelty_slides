@@ -274,9 +274,10 @@ section img { display: block; margin: 10px auto 0; height: 360px; }
 
 ## Take-home messages
 
-- [TODO: conceptual distance and recombination behave differently]
-- [TODO: report facets separately; state the normalization]
-- [TODO: small effects: direction and consistency, not prediction]
+- **Cheap and scalable**: open metadata only (titles, abstracts, references), no full texts, no training
+- applicable **at the time of publication**: does not depend on the focal paper's citations
+- **Consistent with established indicators**: `ref_ref` ρ 0.18–0.39 with Uzzi, Lee, Foster, Shibayama; `paper_ref` weaker
+- **Report facets separately**: a composite depends on the normalization, so state it or avoid it
 
 ## Limitations & next steps
 
