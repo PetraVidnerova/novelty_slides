@@ -49,27 +49,58 @@ Time budget per section is given in the section comment; the total is 25 min.
 <!-- ~3.5 min, 3 slides -->
 
 ## Combinatorial indicators
+<style scoped>
+section { font-size: 22px; }
+</style>
 
-- [TODO: Uzzi et al. 2013: atypical journal-pair combinations (z-scores)]
-- [TODO: Lee et al. 2015: commonness of journal pairs]
-- [TODO: Wang et al. 2017: new journal pairs, weighted by distance]
-- [TODO: Foster et al. 2015: [one-line description]]
-- [FIG: schematic: paper → references → journal pairs]
+- **Uzzi et al. (2013): atypical combinations**
+  - Citation-journal pairs compared with a randomized baseline using **z-scores**
+  - Novelty = atypical recombination of otherwise familiar knowledge
+
+- **Lee et al. (2015): commonness**
+  - Measures whether cited-journal pairs are more/less frequent than expected
+  - Novelty focuses on the **least-common pairs**
+
+- **Wang et al. (2017): new + distant combinations**
+  - Identifies **new journal combinations**, Weights them by **knowledge distance**
+
+- **Foster et al. (2015): knowledge-network innovation**
+  - Models novelty through **new entities, relationships, and cross-network links**
+  - Goes beyond journal pairs to the **structure of knowledge**
+
+<!--
+> **Common principle:** novelty is inferred from the **configuration of links to prior knowledge**: atypicality, newness, or distance.
+--> 
 
 ## Limitations of the combinatorial approach
+<style scoped>
+section { font-size: 26px; }
+</style>
 
-- [TODO: discrete co-occurrence, depends on journal category schemes]
-- [TODO: needs a reference corpus/baseline; weak for papers with few references]
-- [TODO: ignores the *content* of references]
+- **Indirect:** journals/categories proxy the actual concepts, methods, and findings.
+- **Corpus-dependent:** what is “rare” or “new” depends on database coverage and the reference corpus.
+- **Atypicality ≠ substantive novelty:** unusual citation patterns do not establish a novel scientific contribution, and novel contributions need not produce unusual combinations.
+- **Unit-dependent:** results can change with the chosen journal/field/category representation.
+
+> **Core limitation:** these indicators measure **bibliographic recombination**, not the scientific content of the recombination.
 
 ## Embedding-based alternatives
+<style scoped>
+section { font-size: 24px; }
+</style>
 
-- [TODO: semantic distance in a continuous space instead of pair rarity]
-- [TODO: prior work using embeddings for novelty: citations]
-- [TODO: gap: usually reported as a single number; the choice of facet is implicit]
+- **Semantic representation:** papers/references are represented as vectors in a **continuous semantic space**.
+- **Semantic distance:** novelty can be measured as distance rather than journal-pair rarity or first occurrence.
+- **Two distinct dimensions:**
+  - `paper_ref` → **conceptual distance** between the paper and its references
+  - `ref_ref` → **knowledge recombination** among the references
+
+> **Our approach:** measure **conceptual distance** and **knowledge recombination** separately chosen journal/field/category representation.
+
+> **Core limitation:** these indicators measure **bibliographic recombination**, not the scientific content of the recombination.
+
 
 ## novelpy
-
 <style scoped>
 section { font-size: 22px; }
 table { font-size: 20px; margin-top: 50px; margin-left: 60px; }
