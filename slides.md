@@ -1,8 +1,9 @@
 ---
-title: Measuring Scientific Novelty through Conceptual Distance and Knowledge Recombination
+title: Measuring Scientific Novelty through Conceptual Distance <br> and Knowledge Recombination
 author: Petra Vidnerová, Roman Neruda, Jiří Šejnoha
 institute: Institute of Computer Science, The Czech Academy of Sciences
-date: "October 8, 2026"
+date: "Prague, October 8, 2026"
+venue: "Novelty and Inequalities in Science,<br>International Research Symposium on Recognizing and Rewarding Novelty in Science"
 ---
 
 <!--
@@ -79,7 +80,7 @@ section { font-size: 26px; }
 
 - **Indirect:** journals/categories proxy the actual concepts, methods, and findings.
 - **Corpus-dependent:** what is “rare” or “new” depends on database coverage and the reference corpus.
-- **Atypicality ≠ substantive novelty:** unusual citation patterns do not establish a novel scientific contribution, and novel contributions need not produce unusual combinations.
+- **Atypicality IS NOT substantive novelty:** unusual citation patterns do not establish a novel scientific contribution, and novel contributions need not produce unusual combinations.
 - **Unit-dependent:** results can change with the chosen journal/field/category representation.
 
 > **Core limitation:** these indicators measure **bibliographic recombination**, not the scientific content of the recombination.
@@ -89,15 +90,14 @@ section { font-size: 26px; }
 section { font-size: 24px; }
 </style>
 
-- **Semantic representation:** papers/references are represented as vectors in a **continuous semantic space**.
-- **Semantic distance:** novelty can be measured as distance rather than journal-pair rarity or first occurrence.
-- **Two distinct dimensions:**
-  - `paper_ref` → **conceptual distance** between the paper and its references
-  - `ref_ref` → **knowledge recombination** among the references
+- **Idea:** represent texts as vectors in a **semantic space**; novelty = **semantic distance** instead of journal-pair rarity
+- **Shibayama et al. (2021): word embeddings of references**
+  - Each cited reference = mean of pretrained word vectors (scispaCy) over its title (or abstract/keywords)
+  - Novelty = distance **among the references**
+  - Same combinatorial logic, but on **content** instead of journals
+- **Gap:** text-based measures compare the paper with the **literature at large** (e.g. Jeon et al. 2023) or measure distance **among its references** (Shibayama); the paper vs. **its own cited references** is rarely measured, and not alongside recombination
 
-> **Our approach:** measure **conceptual distance** and **knowledge recombination** separately chosen journal/field/category representation.
-
-> **Core limitation:** these indicators measure **bibliographic recombination**, not the scientific content of the recombination.
+> **Our approach:** document embeddings (SPECTER2) and two separate dimensions: **conceptual distance** (`paper_ref`) and **knowledge recombination** (`ref_ref`)
 
 
 ## novelpy
