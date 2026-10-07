@@ -55,7 +55,7 @@ section { font-size: 22px; }
 </style>
 
 - **Uzzi et al. (2013): atypical combinations**
-  - Citation-journal pairs compared with a randomized baseline using **z-scores**
+  - Citation-journal pairs compared with a randomized baseline
   - Novelty = atypical recombination of otherwise familiar knowledge
 
 - **Lee et al. (2015): commonness**
@@ -63,7 +63,7 @@ section { font-size: 22px; }
   - Novelty focuses on the **least-common pairs**
 
 - **Wang et al. (2017): new + distant combinations**
-  - Identifies **new journal combinations**, Weights them by **knowledge distance**
+  - Identifies **new journal combinations**, weights them by **knowledge distance**
 
 - **Foster et al. (2015): knowledge-network innovation**
   - Models novelty through **new entities, relationships, and cross-network links**
@@ -125,7 +125,7 @@ table { font-size: 20px; margin-top: 50px; margin-left: 60px; }
 
 - **Metascience Novelty Indicators Challenge**: launched Sept 2025
 - **Goal**: indicators that *automatically* identify novelty in publications
-- **Ground truth**: field experts rate novelty of OpenAlex papers from the full text
+- **Ground truth**: field experts rate novelty of  papers from the full text
 - **Task**: a novelty score per paper, compared with the expert scores
 - **Evaluation**: median error and its consistency, for scores and rankings
 - **Outcome**: 30 indicators; winner LENS (Jülich, LLM-based)
@@ -259,7 +259,9 @@ section { font-size: 24px; }
 section img { display: block; margin: 10px auto 0; height: 390px; }
 </style>
 
-- [TODO: key message: `ref_ref` weakly positive, `paper_ref` ≈ 0]
+- paper_ref ≈ 0 with every journal metric (|ρ| ≤ 0.04)
+- ref_ref weakly positive (up to 0.13)
+
 
 ![](img/journal_matrix_paper.png)
 
@@ -270,9 +272,7 @@ section { font-size: 24px; }
 section img { display: block; margin: 10px auto 0; height: 390px; }
 </style>
 
-- [TODO: `ref_ref` vs. SJR / citedness at ≥1, ≥5, ≥20 papers per journal]
-- [FIG: F5: facet by SJR quartile, boxplots]
-- [TODO: ecological-fallacy caveat]
+- Averaged per journal, ref_ref rises to ρ ≈ 0.30 with impact per paper; paper_ref stays ≤ 0.16
 
 ![](img/journal_matrix_journal.png)
 
@@ -306,7 +306,7 @@ section img { display: block; margin: 10px auto 0; height: 360px; }
 ## Take-home messages
 
 - **Cheap and scalable**: open metadata only (titles, abstracts, references), no full texts, no training
-- applicable **at the time of publication**: does not depend on the focal paper's citations
+- Applicable **at the time of publication**: does not depend on the focal paper's citations
 - **Consistent with established indicators**: `ref_ref` ρ 0.18–0.39 with Uzzi, Lee, Foster, Shibayama; `paper_ref` weaker
 - **Report facets separately**: a composite depends on the normalization, so state it or avoid it
 
